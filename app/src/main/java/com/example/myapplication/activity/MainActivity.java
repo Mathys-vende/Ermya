@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     ConstraintLayout cam_prev;
     Camera myCamera = null;
-    FloatingActionButton buttonFlash, buttonDetect, buttonSwitch;
+    FloatingActionButton buttonDetect, buttonSwitch;
     Boolean flashEnabled = false;
     int red, blue, green, r_clo, b_clo, g_clo, closest_int, color_int = 0;
     TextView cname, color_closest;
@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         cname = findViewById(R.id.C_name);
         color_closest = findViewById(R.id.color_closest);
         cam_prev = findViewById(R.id.cam_prev);
-        buttonFlash = findViewById(R.id.flash);
         buttonDetect = findViewById(R.id.detect);
         buttonSwitch = findViewById(R.id.switch_camera);
 
@@ -116,27 +115,6 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
-            });
-            buttonFlash.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (flash)
-                        if (myCamera != null) {
-                            if (!flashEnabled) {
-                                Camera.Parameters parameters = myCamera.getParameters();
-                                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-                                myCamera.setParameters(parameters);
-                                flashEnabled = true;
-                                buttonFlash.setImageResource(R.drawable.ic_flash_on);
-                            } else {
-                                Camera.Parameters parameters = myCamera.getParameters();
-                                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-                                myCamera.setParameters(parameters);
-                                flashEnabled = false;
-                                buttonFlash.setImageResource(R.drawable.ic_flash_off);
-                            }
-                        }
                 }
             });
         }
