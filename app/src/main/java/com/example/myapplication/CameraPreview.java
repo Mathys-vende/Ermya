@@ -67,7 +67,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             Data = data;
             if (flag == true) {
                 fheight = camera.getParameters().getPreviewSize().height;
+                System.out.println(fheight);
                 fwidth = camera.getParameters().getPreviewSize().width;
+                System.out.println(fwidth);
                 flag = false;
             }
         } catch (Exception e) {
@@ -77,7 +79,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         YuvImage yuvImage = new YuvImage(Data, ImageFormat.NV21, fwidth, fheight, null);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        yuvImage.compressToJpeg(new Rect((fwidth / 2) - 20, (fheight / 2) - 20, (fwidth / 2) + 20, (fheight / 2) + 20), 100, out);
+        yuvImage.compressToJpeg(new Rect((fwidth / 2) - 960, (fheight / 2) - 540, (fwidth / 2) + 960 , (fheight / 2) + 540), 100, out);
         byte[] bytes = out.toByteArray();
         bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
