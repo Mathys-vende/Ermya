@@ -3,9 +3,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
@@ -13,7 +12,32 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cam_prev"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#fff"
+                tools:layout_editor_absoluteY="662dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="DETECTER"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
             <include
                 android:id="@+id/toolbar"
@@ -70,19 +94,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/detect"
-                android:layout_width="78dp"
-                android:layout_height="75dp"
+                android:layout_width="57dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="22dp"
                 android:backgroundTint="#37474f"
-                android:src="@drawable/ic_center_focus_weak"
+                android:src="@drawable/_7803"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:rippleColor="#D5B9B9" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/flash"
@@ -90,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginBottom="7dp"
-                android:src="@drawable/ic_flash_off"
+                android:src="@drawable/output_onlinepngtools__1_"
                 app:backgroundTint="#607d8b"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/detect" />
@@ -101,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="7dp"
-                android:src="@drawable/ic_camera_rear"
+                android:src="@drawable/_621662"
                 app:backgroundTint="#607d8b"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/detect" />
