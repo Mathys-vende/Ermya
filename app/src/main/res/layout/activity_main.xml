@@ -123,7 +123,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
-                    android:text="DETECT"
+                    android:text="DETECTER"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -182,7 +182,7 @@ public class ColorN {
         colorList.add(new String[]{"Brun","42","20","14"});
         colorList.add(new String[]{"Violet foncé","42","38","48"});
         colorList.add(new String[]{"Vert foncé","42","56","11"});
-        colorList.add(new String[]{"Violette","43","2","2"});
+        colorList.add(new String[]{"Violet","43","2","2"});
         colorList.add(new String[]{"Violet","43","25","79"});
         colorList.add(new String[]{"Sombre","43","50","40"});
         colorList.add(new String[]{"Violet","44","14","140"});
@@ -302,7 +302,7 @@ public class ColorN {
         colorList.add(new String[]{"Sombre","69","73","54"});
         colorList.add(new String[]{"Bleu foncé","69","108","172"});
         colorList.add(new String[]{"Bleu","69","177","232"});
-        colorList.add(new String[]{"Violette","70","11","65"});
+        colorList.add(new String[]{"Violet","70","11","65"});
         colorList.add(new String[]{"Marron foncé","70","36","37"});
         colorList.add(new String[]{"Brun","72","4","4"});
         colorList.add(new String[]{"Violet","72","6","7"});
@@ -368,7 +368,7 @@ public class ColorN {
         colorList.add(new String[]{"Bleu","86","180","190"});
         colorList.add(new String[]{"Vert foncé","87","131","99"});
         colorList.add(new String[]{"Brun","88","52","1"});
-        colorList.add(new String[]{"Violette","88","85","98"});
+        colorList.add(new String[]{"Violet","88","85","98"});
         colorList.add(new String[]{"Vert foncé","88","113","86"});
         colorList.add(new String[]{"Bleu foncé","88","154","175"});
         colorList.add(new String[]{"Bleu","89","29","53"});
@@ -1071,7 +1071,7 @@ public class ColorN {
         colorList.add(new String[]{"Couleur de la peau rose","235","147","115"});
         colorList.add(new String[]{"Jaune clair","236","169","39"});
         colorList.add(new String[]{"Jaune clair","236","197","78"});
-        colorList.add(new String[]{"Violette","236","199","238"});
+        colorList.add(new String[]{"Violet","236","199","238"});
         colorList.add(new String[]{"Couleur de la peau rose","236","205","185"});
         colorList.add(new String[]{"Jaune clair","236","224","144"});
         colorList.add(new String[]{"Gris clair","236","235","206"});
