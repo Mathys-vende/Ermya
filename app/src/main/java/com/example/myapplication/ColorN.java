@@ -10,8 +10,8 @@ public class ColorN {
     static {
         colorList.add(new String[]{"Dark Blue", "0", "7", "65"});
         colorList.add(new String[]{"Black", "0", "0", "0"});
-        colorList.add(new String[]{"Dark Green", "0", "27", "28"});
         colorList.add(new String[]{"Dark Blue", "0", "35", "135"});
+        colorList.add(new String[]{"Dark Green", "0", "27", "28"});
         colorList.add(new String[]{"Dark Green ", "0", "41", "0"});
         colorList.add(new String[]{"Dark Green", "0", "46", "32"});
         colorList.add(new String[]{"Dark Blue", "0", "49", "83"});

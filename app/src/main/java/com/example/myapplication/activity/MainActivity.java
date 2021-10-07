@@ -6,13 +6,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera;
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.CameraPreview;
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     boolean flash = true;
     int camId = Camera.CameraInfo.CAMERA_FACING_BACK;
     private static final int cam_per = 100;
+
     Bitmap bitmap;
 
 
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         buttonFlash = findViewById(R.id.flash);
         buttonDetect = findViewById(R.id.detect);
         buttonSwitch = findViewById(R.id.switch_camera);
+
 
         startCamera();
 
@@ -76,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (color_name != null) {
-                        cname.setText("COLOR :  " + color_name[0].toUpperCase());
+                        cname.setText("Couleur :  " + color_name[0].toUpperCase());
                         color_closest.setBackgroundColor(closest_int);
                     }
                 }
@@ -132,6 +140,44 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        int x = (int)event.getX();
+        x = Math.abs(1080 - x);
+        int y = (int)event.getY()-359;
+        bitmap = preview.getBitmap();
+        System.out.println(x);
+        System.out.println(bitmap.getWidth());
+        System.out.println(y);
+        System.out.println(bitmap.getHeight());
+        try {
+            int Pixel = bitmap.getPixel(y,x);
+            red = Color.red(Pixel);
+            green = Color.green(Pixel);
+            blue = Color.blue(Pixel);
+            color_int = red * 65536 + green * 256 + blue - 16777216;
+        }catch (Exception e ){
+
+        }
+        try {
+            color_name = colorName.getColorName(red, green, blue);//String[] object return with length 3
+            r_clo = Integer.parseInt(color_name[1]);//here string return
+            g_clo = Integer.parseInt(color_name[2]);
+            b_clo = Integer.parseInt(color_name[3]);
+            closest_int = r_clo * 65536 + g_clo * 256 + b_clo - 16777216;//rgb to int //here second value for color with alpha value
+        } catch (Exception e) {
+        }
+
+        if (color_name != null) {
+            cname.setText("Couleur :  " + color_name[0].toUpperCase());
+            color_closest.setBackgroundColor(closest_int);
+        }
+
+
+
+        return true;
+    }
     public void onStart() {
         super.onStart();
         Overlay ov2 = new Overlay(this);
@@ -173,8 +219,4 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    /*public void startTeste(View v) {
-        startActivity(new Intent(this, TestActivity.class));
-    }*/
 }
