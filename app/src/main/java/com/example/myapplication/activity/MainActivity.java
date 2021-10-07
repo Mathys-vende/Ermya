@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     ConstraintLayout cam_prev;
     Camera myCamera = null;
-    FloatingActionButton buttonDetect, buttonSwitch;
+    FloatingActionButton buttonFlash, buttonSwitch;
     Boolean flashEnabled = false;
     int red, blue, green, r_clo, b_clo, g_clo, closest_int, color_int = 0;
     TextView cname, color_closest;
@@ -54,40 +54,12 @@ public class MainActivity extends AppCompatActivity {
         cname = findViewById(R.id.C_name);
         color_closest = findViewById(R.id.color_closest);
         cam_prev = findViewById(R.id.cam_prev);
-        buttonDetect = findViewById(R.id.detect);
         buttonSwitch = findViewById(R.id.switch_camera);
+        buttonFlash = findViewById(R.id.flash);
 
 
         startCamera();
 
-
-            buttonDetect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try {
-                        bitmap = preview.getBitmap();
-                        int Pixel = bitmap.getPixel(0, 0);
-                        red = Color.red(Pixel);
-                        green = Color.green(Pixel);
-                        blue = Color.blue(Pixel);
-                        color_int = red * 65536 + green * 256 + blue - 16777216;
-                    } catch (Exception e) {
-                    }
-                    try {
-                        color_name = colorName.getColorName(red, green, blue);//String[] object return with length 3
-                        r_clo = Integer.parseInt(color_name[1]);//here string return
-                        g_clo = Integer.parseInt(color_name[2]);
-                        b_clo = Integer.parseInt(color_name[3]);
-                        closest_int = r_clo * 65536 + g_clo * 256 + b_clo - 16777216;//rgb to int //here second value for color with alpha value
-                    } catch (Exception e) {
-                    }
-
-                    if (color_name != null) {
-                        cname.setText("Couleur :  " + color_name[0].toUpperCase());
-                        color_closest.setBackgroundColor(closest_int);
-                    }
-                }
-            });
             buttonSwitch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -100,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
                     if (camId == Camera.CameraInfo.CAMERA_FACING_BACK) {
                         camId = Camera.CameraInfo.CAMERA_FACING_FRONT;
                         flash = false;
-                        buttonSwitch.setImageResource(R.drawable.ic_camera_front);
+                        buttonSwitch.setImageResource(R.drawable.switch_camera);
                     } else {
                         camId = Camera.CameraInfo.CAMERA_FACING_BACK;
                         flash = true;
-                        buttonSwitch.setImageResource(R.drawable.ic_camera_rear);
+                        buttonSwitch.setImageResource(R.drawable.switch_camera);
                     }
                     myCamera = Camera.open(camId);
                     try {
@@ -117,6 +89,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        buttonFlash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (flash)
+                    if (myCamera != null) {
+                        if (!flashEnabled) {
+                            Camera.Parameters parameters = myCamera.getParameters();
+                            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                            myCamera.setParameters(parameters);
+                            flashEnabled = true;
+                            buttonFlash.setImageResource(R.drawable.flash);
+                        } else {
+                            Camera.Parameters parameters = myCamera.getParameters();
+                            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                            myCamera.setParameters(parameters);
+                            flashEnabled = false;
+                            buttonFlash.setImageResource(R.drawable.no_flash);
+                        }
+                    }
+            }
+        });
         }
     @Override
     public boolean onTouchEvent(MotionEvent event)
